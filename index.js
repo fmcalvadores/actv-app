@@ -1,8 +1,11 @@
 const express = require('express');
 const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
+const methodOverride = require('method-override');
+const { default: mongoose } = require('mongoose');
 
 const path = require('path');
+
 const app = express();
 
 app.use(express.static(path.join(__dirname, '/public')));
@@ -10,17 +13,14 @@ app.set('view engine','ejs');
 
 app.set('views',path.join(__dirname,'/views'));
 
-const methodOverride = require('method-override');
-
-const {v4: uuidv4} = require('uuid');
-const { default: mongoose } = require('mongoose');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
-
+app.use(cookieParser());
 
 const {Post,User} = require('./models/Schemas');
 const { Session } = require('inspector');
+
 mongoose.connect('mongodb://localhost:27017/actvDB')
     .then(() => {
         console.log("Connection Open");
@@ -30,11 +30,8 @@ mongoose.connect('mongodb://localhost:27017/actvDB')
         console.log(err);
     })
 
-app.locals.appTitle = 'Actv';
-
 let actvReviews = [
     {
-        id: uuidv4,
         reviewedBy: 'fmdc',
         createdDate: '10/09/2022 13:02:42',
         updatedDate: '10/09/2022 13:02:42',
@@ -52,6 +49,16 @@ app.use(sessions(
         resave: false 
     }
 ));
+
+
+app.locals.appTitle = 'Actv';
+const myusername = 'user1'
+const mypassword = 'mypassword'
+
+// a variable to save a session
+var session;
+
+
 
 app.get('/actv/new',(req,res)=> {
     res.render('actv/new');
