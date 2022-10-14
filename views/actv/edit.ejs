@@ -1,0 +1,31 @@
+<%- include('../partials/navbar') %>
+    
+<div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            
+            <form action="/actv/<%= post._id%>?_method=PUT" method="post">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="hidden" name="id" class="form-control" id="id" value="<%= post._id%>">
+                    <input type="text" name="title" class="form-control" placeholder="Add Title" required id="title" aria-describedby="title" value="<%= post.title%>">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea name="description"  class="form-control" placeholder="Leave a description here" id="description" style="height: 100px"><%= post.description%></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input value="<%= post.price%>" type="number" name="price" class="form-control" placeholder="Add Title" required id="price" aria-describedby="price">
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" value="<%= post.location%>" name="location" class="form-control" placeholder="Add Location" required id="location" aria-describedby="location">
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+<%- include('../partials/footer') %>
