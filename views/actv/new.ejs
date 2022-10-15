@@ -1,30 +1,31 @@
     <%- include('../partials/navbar') %>
-    <div class="col-lg-3"></div>
-    
-    <div class="col-lg-6">
-        <a href="/actv">Go Back</a>
-        <form action="/actv" method="POST">
-            <div class="form-group">
-              <label for="title">Title</label>
-              <input type="text" name="title" class="form-control" placeholder="Add Title" required id="title" aria-describedby="title">
-            </div>
-            <div class="form-group">
-              <label for="description">Description</label>
-              <textarea name="description" class="form-control" placeholder="Leave a description here" id="description" style="height: 100px"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="title">Price</label>
-              <input type="number" name="price" class="form-control" placeholder="Add Title" required id="price" aria-describedby="price">
-            </div>
-            <div class="form-group">
-              <label for="location">Location</label>
-              <input type="text" name="location" class="form-control" placeholder="Add Location" required id="location" aria-describedby="location">
-            </div>
-    
-            <button type="submit" id="postListing" class="btn btn-primary">Post</button>
-          </form>
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6">
+        <a href="/actv" class="btn btn-outline-secondary mb-5"><i class="fas fa-arrow-left"></i> Go Back</a>      
+          <form action="/actv" method="POST">
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" class="form-control" placeholder="Add Title" required id="title" aria-describedby="title">
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" class="form-control" placeholder="Leave a description here" id="description" style="height: 100px"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="title">Price</label>
+                <input type="number" name="price" class="form-control" placeholder="Add Title" required id="price" aria-describedby="price">
+              </div>
+              <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" name="location" class="form-control" placeholder="Add Location" required id="location" aria-describedby="location">
+              </div>
+              <button type="submit" id="postListing" class="btn btn-primary mt-3">Post</button>
+            </form>
+      </div>
+      
+      
+      
+  <div class="col-lg-3"></div>
     </div>
-    
-    
-    
-<div class="col-lg-3"></div>
+<%- include('../partials/footer') %>

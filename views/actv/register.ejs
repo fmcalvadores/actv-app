@@ -1,0 +1,35 @@
+<%- include('../partials/navbar') %>
+<div class="row">
+  <div class="col-lg-4"></div>
+<div class="col-lg-4">
+    <form action="/signup" method="POST">
+      <div class="form-group">
+        <label for="exampleInputEmail1">First Name</label>
+        <input type="text" class="form-control" placeholder="First Name" required id="firstName" name="firstName" aria-describedby="firstName">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Last Name</label>
+        <input type="text" class="form-control" placeholder="Last Name" required id="lastName" aria-describedby="lastName" name="lastName">
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" required id="username" name="username" aria-describedby="username">
+      </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" required id="email" name="email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" required class="form-control" id="password" name="password">
+        </div>
+        <div class="form-group">
+          <label for="conPassword">Confirm Password</label>
+          <input type="password" required class="form-control" id="conPassword" name="conPassword">
+        </div>
+        <button type="submit" class="btn btn-primary">Sign-up</button>
+      </form>
+</div>
+<div class="col-lg-4"></div>
+</div>
+<%- include('../partials/footer') %>

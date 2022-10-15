@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 const {User,Post} = require('./models/Schemas');
-const bcyrpt = require('bcrypt');
-const SALT_WORK_FACTOR = 10;
 
 mongoose.connect('mongodb://localhost:27017/actvDB')
     .then(() => {

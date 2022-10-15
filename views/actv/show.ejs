@@ -1,32 +1,19 @@
     <%- include('../partials/navbar') %>
-    <div class="col-lg-3"></div>
+    
+    <div class="row">
+        <div class="col-lg-3"></div>
+    
     <div class="col-lg-6 m-6">
-        <a href="/actv" class="btn btn-outline-secondary mb-5"><i class="fas fa-arrow-left"></i> Go Back</a>        
-        <div class="d-flex">
-            
-            <div class="dropdown mr-1">
-                <button type="button" class="btn btn-outline-secondary dropdown-toggle ml-2 mb-2" data-toggle="dropdown" aria-expanded="false" data-offset="10,20">
-                    <i class="fas fa-ellipsis-h"></i>
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="/actv/<%=list.id %>/edit/">Edit this post</a>
-                  <a class="dropdown-item" href="#"  onclick="submitForm('submitForm','btnId');" >
-                    Delete this post
-                    <form hidden id="submitForm" action="/actv/<%= list._id %>?_method=DELETE" method="post">
-                    </form>
-                  </a>
-                </div>
-              </div>
-        </div>
+        <a href="/actv" class="btn btn-outline-secondary mb-5"><i class="fas fa-arrow-left"></i> Go Back</a>
         <div class="card" style="border: 0px;">
-            
             <img src="../img/test-image.jpg" class="card-img-top" alt="NO IMAGE" style="border-radius: 2%;">
             
             <div class="card-body">
+                
                 <h3><%= list.title %></h3>
                 <small>
                     Posted by 
-                    <a href="#" class="badge badge-light"><%= list.postedBy %></a>
+                    <span class="badge text-bg-danger"><%= list.postedBy %></span>
                     <%= list.dateposted %>
                 </small>
                 <hr>
@@ -35,11 +22,26 @@
                     <span class="card-text text-to-ellipsis"><%= list.description %></span>
                 </p>
             </div>
+            
         </div>
-        
-        <form hidden id="formDelete" action="/actv/<%= list.id %>?_method=DELETE" method="post"></form>
+        <a class="btn btn-outline-secondary" href="/actv/<%=list.id %>/edit/">Edit this post</a>
+        <a class="btn btn-outline-secondary" href="#"  onclick="submitForm('submitForm','btnId');" >
+            Delete this post
+            <form hidden id="submitForm" action="/actv/<%= list._id %>?_method=DELETE" method="post">
+            </form>
+            </a>
+
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea name="description" class="form-control" placeholder="Leave a description here" id="description" style="height: 100px"></textarea>
+          </div>
     
     </div>
-    <div class="col-lg-3"></div>
-    <script type="text/javascript" src="../js/client.js"></script>
+    <div class="col-lg-3">
+        
+    </div>
+    </div>
+    
+
     <%- include('../partials/footer') %>
