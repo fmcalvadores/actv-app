@@ -24,18 +24,59 @@
             </div>
             
         </div>
-        <a class="btn btn-outline-secondary" href="/actv/<%=list.id %>/edit/">Edit this post</a>
-        <a class="btn btn-outline-secondary" href="#"  onclick="submitForm('submitForm','btnId');" >
+        <a class="btn btn-outline-secondary mb-3" href="/actv/<%=list.id %>/edit/">Edit this post</a>
+        <a class="btn btn-outline-secondary mb-3" href="#"  onclick="submitForm('submitForm','btnId');" >
             Delete this post
             <form hidden id="submitForm" action="/actv/<%= list._id %>?_method=DELETE" method="post">
             </form>
             </a>
 
 
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea name="description" class="form-control" placeholder="Leave a description here" id="description" style="height: 100px"></textarea>
-          </div>
+        
+            <form id="reviewForm" action="/actv/comment/<%= list._id %>" method="post">
+                <div class="form-group">
+                <label for="description">Review</label>
+                <textarea name="description" class="form-control mb-2" placeholder="Leave a description here" id="description" style="height: 100px"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="ratings">Ratings</label>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          Default radio
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                          Default checked radio
+                        </label>
+                      </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                        <label class="form-check-label" for="inlineCheckbox1">Poor</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                        <label class="form-check-label" for="inlineCheckbox2">Fair</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
+                        <label class="form-check-label" for="inlineCheckbox3">Good</label>
+                      </div>
+
+                        <button type="button" name="ratings" class="btn btn-danger" >Poor</button>
+                        <button type="button" name="ratings" class="btn btn-warning">Fair</button>
+                        <button type="button" name="ratings" class="btn btn-secondary">Good</button>
+                        <button type="button" name="ratings" class="btn btn-success">Very Good</button>
+                        <button type="button" name="ratings" class="btn btn-primary">Excellent</button>
+                    
+                </div>
+                
+            </form>
+            
     
     </div>
     <div class="col-lg-3">
