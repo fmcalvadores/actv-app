@@ -23,25 +23,38 @@
         
         <div class="row mb-5">  
             <% if(actvList.length > 0) { %>            
-                <% for (let t of actvList) {%> 
+                <% for (let post of actvList) {%> 
                     <div class="col-lg-3 mb-3" >
                         <div class="card ">
-                            <a href="/actv/<%= t.id%>" class="btn btn-link">
+                            <a href="/actv/<%= post.id%>" class="btn btn-link">
                                 <img src="../img/test-image.jpg" class="card-img-top" alt="NO IMAGE" style="border-radius: 2%;">
                             </a>
                             <div class="card-body">
-                                <h3 class="text-to-ellipsis" style="min-height: 70px;"><%= t.title %></h3>
+
+                                <% if(post.ratings.length > 0 ) {%>
+                                    <% let sumrate = 0; %>
+                                    <% let reviewers = post.ratings.length; %>
+                                    <% for(let rating of post.ratings) {%>
+                                    <%        sumrate += rating.rate; %>
+                                    <small><i class="far fa-star"></i> <%= sumrate %> - <%= reviewers + ' Reviewer(s)'%></small>
+                                    <%}%>
+                                <% } else {%>
+                                    No Ratings yet.
+                                <% }%>
+                                <h3 class="text-to-ellipsis" style="min-height: 70px;"><%= post.title %></h3>
                                 <small>
                                     Posted by 
-                                    <span class="badge text-bg-secondary"><%= (t.postedBy == null ? 'Anonymous' : t.postedBy) %></span>
-                                    <%= t.dateposted %>
+                                    <%  for (let user of arrUser) { %>
+                                        <span class="badge text-bg-secondary"><%= (user.id = post.postedBy ?  user.fullName : 'Anonymous') %></span>
+                                    <% } %>
+                                    <%= post.dateposted %>
                                 </small>
                                 <hr>
                                 <p style="height: 100px;">
-                                    <i class="fas fa-map-marker"></i> <b><%= t.location %></b>
-                                    <span class="card-text text-to-ellipsis"><%= t.description %></span>
+                                    <i class="fas fa-map-marker"></i> <b><%= post.location %></b>
+                                    <span class="card-text text-to-ellipsis"><%= post.description %></span>
                                 </p>
-                                <a href="/actv/<%= t.id%>" class="btn btn-outline-primary btn-block">View Info</a>
+                                <a href="/actv/<%= post.id%>" class="btn btn-outline-primary btn-block">View Info</a>
                             </div>
                         </div>
                     </div>            

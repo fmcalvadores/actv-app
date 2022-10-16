@@ -92,9 +92,10 @@ app.get('/actv/login', (req, res) =>{
 app.get('/actv/:id', async (req,res) => {
     const {id} = req.params;
     res.locals.isAuth = req.session.isAuth;
-    res.locals.completeName = req.session.completeName;
+    //res.locals.completeName = req.session.completeName;
     let list = await Post.findById(id);
-    res.render('actv/show',{list});
+    let user = await User.findById(list.postedBy);
+    res.render('actv/show',{list,user});
 })
 
 app.put('/actv/:id', async (req,res)=> {
@@ -113,9 +114,16 @@ app.get('/actv/:id/edit',isAuth, async (req,res) => {
 
 app.get('/actv', async (req,res)=> {
     const actvList = await Post.find({});
+    const user = await User.find({});
+    
+    let arrUser = [];
+    user.forEach(element => {
+        arrUser.push({'id': element._id, 'fullName': element.firstName+ " " + element.lastName});
+    })
+    console.log(arrUser);
     res.locals.isAuth = req.session.isAuth;
     res.locals.completeName = req.session.completeName;
-    res.render('actv/index',{actvList});
+    res.render('actv/index',{actvList, arrUser});
 })
 
 app.delete('/actv/:id',isAuth, async (req, res) => {

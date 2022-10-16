@@ -38,6 +38,29 @@ const UserSchema = new Schema(
     }
 );
 
+const RatingSchema = new Schema(
+    {
+        ratedBy: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        rate: {
+            type: Number,
+            required: true
+        },
+        ratedDate: {
+            type: Date
+        },
+        updatedDate: {
+            type: Date
+        },
+        comment: {
+            type: String
+        }
+        
+    }
+)
+
 const PostSchema = new Schema(
     {
         postedBy: {
@@ -71,7 +94,8 @@ const PostSchema = new Schema(
             required: true,
             min: 6,
             max: 255
-        }
+        },
+        ratings: [RatingSchema]
     }
 );
 
